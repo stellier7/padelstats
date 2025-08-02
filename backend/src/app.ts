@@ -24,6 +24,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const allowedOrigins = isProduction 
   ? [
       'https://padelstats-uvgl.vercel.app',
+      'https://padelstats-l5oruay2h-santiago-telliers-projects.vercel.app',
       'https://padelstats.vercel.app',
       'https://padelstats.onrender.com'
     ]
