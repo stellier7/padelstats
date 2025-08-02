@@ -1,0 +1,151 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  username    String   @unique
+  email       String   @unique
+  password    String
+  firstName   String
+  lastName    String
+  createdAt   DateTime @default(now())
+  
+  // Relations
+  playerStats PlayerStats[]
+  matchPlayers MatchPlayer[]
+  matchEvents  MatchEvent[]
+}
+
+model PlayerStats {
+  id                    String   @id @default(cuid())
+  userId                String
+  matchId               String
+  firstServePercentage  Float    @default(0)
+  pointsWonFirstServe   Int      @default(0)
+  pointsWonSecondServe  Int      @default(0)
+  unforcedErrors        Int      @default(0)
+  forcedErrors          Int      @default(0)
+  netErrors             Int      @default(0)
+  returnErrors          Int      @default(0)
+  smashErrors           Int      @default(0)
+  lobErrors             Int      @default(0)
+  pointsWonExit34       Int      @default(0)
+  pointsLostExit34      Int      @default(0)
+  pointsWonReturn       Int      @default(0)
+  createdAt             DateTime @default(now())
+  
+  user                  User     @relation(fields: [userId], references: [id])
+  match                 Match    @relation(fields: [matchId], references: [id])
+  
+  @@unique([userId, matchId])
+}
+
+model Match {
+  id          String      @id @default(cuid())
+  date        DateTime    @default(now())
+  type        MatchType   // TOURNAMENT, FRIENDLY
+  phase       TournamentPhase? // OCTAVOS, CUARTOS, SEMIFINAL, FINAL
+  status      MatchStatus @default(IN_PROGRESS) // IN_PROGRESS, COMPLETED
+  createdAt   DateTime    @default(now())
+  
+  // Relations
+  players     MatchPlayer[]
+  events      MatchEvent[]
+  playerStats PlayerStats[]
+  tournament  Tournament? @relation(fields: [tournamentId], references: [id])
+  tournamentId String?
+}
+
+model MatchPlayer {
+  id       String @id @default(cuid())
+  matchId  String
+  userId   String
+  team     Int    // 1 or 2
+  position Int    // 1 or 2 (within team)
+  
+  match    Match  @relation(fields: [matchId], references: [id])
+  user     User   @relation(fields: [userId], references: [id])
+  
+  @@unique([matchId, userId])
+}
+
+model MatchEvent {
+  id             String    @id @default(cuid())
+  matchId        String
+  playerId       String
+  eventType      EventType
+  timestamp      DateTime  @default(now())
+  observerId     String    // User who recorded the event
+  additionalData Json?     // Additional data for the event (serve type, point type, etc.)
+  
+  match          Match     @relation(fields: [matchId], references: [id])
+  player         User      @relation(fields: [playerId], references: [id])
+}
+
+model Tournament {
+  id          String   @id @default(cuid())
+  name        String
+  startDate   DateTime
+  endDate     DateTime?
+  status      TournamentStatus @default(UPCOMING)
+  createdAt   DateTime @default(now())
+  
+  // Relations
+  matches     Match[]
+}
+
+enum MatchType {
+  TOURNAMENT
+  FRIENDLY
+}
+
+enum TournamentPhase {
+  OCTAVOS
+  CUARTOS
+  SEMIFINAL
+  FINAL
+}
+
+enum TournamentStatus {
+  UPCOMING
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum MatchStatus {
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum EventType {
+  FIRST_SERVE_IN
+  FIRST_SERVE_OUT
+  POINT_WON_FIRST_SERVE
+  SECOND_SERVE_IN
+  SECOND_SERVE_OUT
+  UNFORCED_ERROR
+  FORCED_ERROR
+  NET_ERROR
+  RETURN_ERROR
+  SMASH_ERROR
+  LOB_ERROR
+  POINT_WON
+  POINT_LOST
+  EXIT_BY_3
+  EXIT_BY_4
+  POINT_WON_EXIT_3_4
+  POINT_WON_RETURN
+}

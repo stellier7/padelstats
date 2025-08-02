@@ -1,0 +1,460 @@
+# Padel Statistics App - Complete Development Guide
+
+## Project Overview
+A real-time padel match statistics tracking application with multi-user observation capabilities, player statistics, and tournament management.
+
+## Technology Stack Recommendation
+- **Frontend**: React.js with TypeScript
+- **Backend**: Node.js with Express
+- **Database**: PostgreSQL with Prisma ORM
+- **Real-time**: Socket.io
+- **Authentication**: JWT tokens
+- **Deployment**: Vercel (frontend) + Railway/Render (backend)
+- **Styling**: Tailwind CSS
+
+---
+
+## PHASE 1: PROJECT SETUP & INFRASTRUCTURE
+
+### 1.1 Initial Setup
+```bash
+# Create project structure
+mkdir padel-stats-app
+cd padel-stats-app
+mkdir frontend backend shared
+
+# Initialize git repository
+git init
+git remote add origin [YOUR_GITHUB_REPO_URL]
+```
+
+### 1.2 Frontend Setup (React + TypeScript)
+```bash
+cd frontend
+npx create-react-app . --template typescript
+npm install socket.io-client axios react-router-dom
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+### 1.3 Backend Setup (Node.js + Express)
+```bash
+cd ../backend
+npm init -y
+npm install express cors helmet morgan dotenv bcryptjs jsonwebtoken
+npm install socket.io prisma @prisma/client
+npm install -D @types/node @types/express @types/bcryptjs @types/jsonwebtoken
+npm install -D nodemon typescript ts-node
+```
+
+### 1.4 Database Setup
+```bash
+# In backend directory
+npx prisma init
+# Configure DATABASE_URL in .env
+npx prisma generate
+```
+
+---
+
+## PHASE 2: DATABASE DESIGN & MODELS
+
+### 2.1 Database Schema (Prisma)
+Create the following models in `prisma/schema.prisma`:
+
+```prisma
+model User {
+  id          String   @id @default(cuid())
+  username    String   @unique
+  email       String   @unique
+  password    String
+  firstName   String
+  lastName    String
+  createdAt   DateTime @default(now())
+  
+  // Relations
+  playerStats PlayerStats[]
+  matchPlayers MatchPlayer[]
+  matchEvents  MatchEvent[]
+}
+
+model Match {
+  id          String      @id @default(cuid())
+  date        DateTime    @default(now())
+  type        MatchType   // TOURNAMENT, FRIENDLY
+  phase       TournamentPhase? // OCTAVOS, CUARTOS, SEMIFINAL, FINAL
+  status      MatchStatus @default(IN_PROGRESS) // IN_PROGRESS, COMPLETED
+  createdAt   DateTime    @default(now())
+  
+  // Relations
+  players     MatchPlayer[]
+  events      MatchEvent[]
+  tournament  Tournament? @relation(fields: [tournamentId], references: [id])
+  tournamentId String?
+}
+
+model MatchPlayer {
+  id       String @id @default(cuid())
+  matchId  String
+  userId   String
+  team     Int    // 1 or 2
+  position Int    // 1 or 2 (within team)
+  
+  match    Match  @relation(fields: [matchId], references: [id])
+  user     User   @relation(fields: [userId], references: [id])
+  
+  @@unique([matchId, userId])
+}
+
+model MatchEvent {
+  id          String    @id @default(cuid())
+  matchId     String
+  playerId    String
+  eventType   EventType
+  timestamp   DateTime  @default(now())
+  observerId  String    // User who recorded the event
+  
+  match       Match     @relation(fields: [matchId], references: [id])
+  player      User      @relation(fields: [playerId], references: [id])
+}
+
+enum MatchType {
+  TOURNAMENT
+  FRIENDLY
+}
+
+enum TournamentPhase {
+  OCTAVOS
+  CUARTOS
+  SEMIFINAL
+  FINAL
+}
+
+enum MatchStatus {
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum EventType {
+  FIRST_SERVE_IN
+  FIRST_SERVE_OUT
+  POINT_WON_FIRST_SERVE
+  SECOND_SERVE_IN
+  SECOND_SERVE_OUT
+  UNFORCED_ERROR
+  FORCED_ERROR
+  NET_ERROR
+  RETURN_ERROR
+  SMASH_ERROR
+  LOB_ERROR
+  POINT_WON
+  POINT_LOST
+  EXIT_BY_3
+  EXIT_BY_4
+  POINT_WON_EXIT_3_4
+  POINT_WON_RETURN
+}
+```
+
+### 2.2 Database Migration
+```bash
+npx prisma migrate dev --name init
+npx prisma generate
+```
+
+---
+
+## PHASE 3: BACKEND DEVELOPMENT
+
+### 3.1 Core Backend Structure
+```
+backend/
+├── src/
+│   ├── controllers/
+│   │   ├── authController.ts
+│   │   ├── matchController.ts
+│   │   ├── playerController.ts
+│   │   └── statsController.ts
+│   ├── middleware/
+│   │   ├── auth.ts
+│   │   └── validation.ts
+│   ├── routes/
+│   │   ├── auth.ts
+│   │   ├── matches.ts
+│   │   ├── players.ts
+│   │   └── stats.ts
+│   ├── services/
+│   │   ├── authService.ts
+│   │   ├── matchService.ts
+│   │   └── statsService.ts
+│   ├── socket/
+│   │   └── matchSocket.ts
+│   ├── utils/
+│   │   └── helpers.ts
+│   └── app.ts
+├── prisma/
+│   └── schema.prisma
+└── package.json
+```
+
+### 3.2 Key Backend Features Implementation
+
+#### Authentication System
+- JWT-based authentication
+- Password hashing with bcrypt
+- Login/register endpoints
+- Protected route middleware
+
+#### Match Management
+- Create new matches
+- Add players to matches
+- Real-time event tracking
+- Match completion logic
+
+#### Statistics Calculation
+- Real-time stats updates
+- Player performance metrics
+- Pair statistics
+- Tournament progression tracking
+
+#### WebSocket Integration
+- Real-time match updates
+- Multi-observer support
+- Event broadcasting
+- Live statistics streaming
+
+---
+
+## PHASE 4: FRONTEND DEVELOPMENT
+
+### 4.1 Frontend Structure
+```
+frontend/src/
+├── components/
+│   ├── common/
+│   │   ├── Header.tsx
+│   │   ├── Navigation.tsx
+│   │   └── Loading.tsx
+│   ├── auth/
+│   │   ├── Login.tsx
+│   │   └── Register.tsx
+│   ├── match/
+│   │   ├── MatchCreation.tsx
+│   │   ├── LiveMatch.tsx
+│   │   ├── EventRecorder.tsx
+│   │   └── MatchStats.tsx
+│   ├── stats/
+│   │   ├── PlayerStats.tsx
+│   │   ├── PairStats.tsx
+│   │   └── TournamentHistory.tsx
+│   └── dashboard/
+│       └── Dashboard.tsx
+├── pages/
+│   ├── LoginPage.tsx
+│   ├── DashboardPage.tsx
+│   ├── MatchPage.tsx
+│   └── StatsPage.tsx
+├── hooks/
+│   ├── useAuth.ts
+│   ├── useSocket.ts
+│   └── useStats.ts
+├── services/
+│   ├── api.ts
+│   ├── socket.ts
+│   └── auth.ts
+├── context/
+│   ├── AuthContext.tsx
+│   └── SocketContext.tsx
+└── types/
+    └── index.ts
+```
+
+### 4.2 Key Frontend Features
+
+#### Authentication Flow
+- Login/logout functionality
+- Protected routes
+- User session management
+- Registration form
+
+#### Match Interface
+- Player selection interface
+- Real-time event recording buttons
+- Live statistics display
+- Multi-observer support
+
+#### Statistics Dashboard
+- Player performance charts
+- Pair statistics comparison
+- Tournament history visualization
+- Export functionality
+
+#### Real-time Updates
+- Socket.io integration
+- Live match updates
+- Real-time statistics
+- Observer notifications
+
+---
+
+## PHASE 5: REAL-TIME FEATURES
+
+### 5.1 Socket.io Implementation
+- Match rooms for observers
+- Real-time event broadcasting
+- Live statistics updates
+- Connection management
+
+### 5.2 Event System
+- Event type validation
+- Player assignment logic
+- Statistics calculation
+- Data persistence
+
+---
+
+## PHASE 6: STATISTICS ENGINE
+
+### 6.1 Core Statistics Calculations
+```typescript
+interface PlayerStats {
+  firstServePercentage: number;
+  pointsWonFirstServe: number;
+  pointsWonSecondServe: number;
+  unforcedErrors: number;
+  forcedErrors: number;
+  netErrors: number;
+  returnErrors: number;
+  smashErrors: number;
+  lobErrors: number;
+  pointsWonExit34: number;
+  pointsLostExit34: number;
+  pointsWonReturn: number;
+}
+```
+
+### 6.2 Pair Statistics
+- Combined performance metrics
+- Tournament progression tracking
+- Win/loss ratios by match type
+- Head-to-head comparisons
+
+---
+
+## PHASE 7: DEPLOYMENT SETUP
+
+### 7.1 Environment Configuration
+```bash
+# Frontend (.env)
+REACT_APP_API_URL=http://localhost:3001
+REACT_APP_SOCKET_URL=http://localhost:3001
+
+# Backend (.env)
+DATABASE_URL="postgresql://..."
+JWT_SECRET="your-secret-key"
+PORT=3001
+NODE_ENV=development
+```
+
+### 7.2 Package.json Scripts
+```json
+{
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start"
+  }
+}
+```
+
+### 7.3 Deployment Configuration
+
+#### Vercel (Frontend)
+```json
+// vercel.json
+{
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/frontend/$1" }
+  ]
+}
+```
+
+#### Railway/Render (Backend)
+- Database hosting
+- API deployment
+- Environment variables setup
+- SSL certificate configuration
+
+---
+
+## PHASE 8: TESTING & OPTIMIZATION
+
+### 8.1 Testing Strategy
+- Unit tests for statistics calculations
+- Integration tests for API endpoints
+- E2E tests for critical user flows
+- Real-time functionality testing
+
+### 8.2 Performance Optimization
+- Database query optimization
+- Frontend bundle optimization
+- Socket.io connection management
+- Caching strategies
+
+---
+
+## DEVELOPMENT ORDER PRIORITY
+
+1. **Setup Phase**: Project structure, dependencies, database
+2. **Authentication**: User system, login/logout
+3. **Basic Match Creation**: Player selection, match initialization
+4. **Event Recording**: Core event types, data persistence
+5. **Real-time Features**: Socket.io integration, live updates
+6. **Statistics Engine**: Calculations, player metrics
+7. **Frontend Polish**: UI/UX improvements, responsive design
+8. **Deployment**: Production setup, environment configuration
+9. **Testing**: Comprehensive testing suite
+10. **Advanced Features**: Tournament management, advanced analytics
+
+---
+
+## QUICK START COMMANDS
+
+```bash
+# Clone and setup
+git clone [your-repo]
+cd padel-stats-app
+npm install
+
+# Development
+npm run dev
+
+# Production build
+npm run build
+
+# Deploy to Vercel
+vercel --prod
+```
+
+---
+
+## NEXT STEPS
+
+1. Set up the project structure following Phase 1
+2. Create the database schema and run migrations (Phase 2)
+3. Implement authentication system (Phase 3.2)
+4. Build the basic match creation interface (Phase 4.2)
+5. Add real-time event recording (Phase 5)
+6. Implement statistics calculations (Phase 6)
+7. Deploy to production (Phase 7)
+
+Each phase can be developed incrementally, allowing for testing and iteration at every step. The modular approach ensures you can deploy a working version early and add features progressively.

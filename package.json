@@ -1,0 +1,21 @@
+{
+  "name": "padel-stats-app",
+  "version": "1.0.0",
+  "description": "Real-time Padel Match Statistics Tracking Application",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "db:setup": "cd backend && npm run db:generate && npm run db:migrate",
+    "db:studio": "cd backend && npm run db:studio"
+  },
+  "keywords": ["padel", "statistics", "real-time", "react", "nodejs"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 

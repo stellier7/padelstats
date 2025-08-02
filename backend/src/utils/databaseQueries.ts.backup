@@ -1,0 +1,5578 @@
+import prisma from '../services/databaseService';
+import { MatchType, MatchStatus, TournamentPhase } from '@prisma/client';
+
+// User queries
+export const userQueries = {
+  // Get user by email
+  findByEmail: (email: string) => {
+    return prisma.user.findUnique({
+      where: { email }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Get user by username
+  findByUsername: (username: string) => {
+    return prisma.user.findUnique({
+      where: { username }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Get user by ID
+  findById: (userId: string) => {
+    return prisma.user.findUnique({
+      where: { id: userId }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Get user with all related data
+  findByIdWithStats: (userId: string) => {
+    return prisma.user.findUnique({
+      where: { id: userId },
+      include: {
+        playerStats: {
+          include: {
+            match: true
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+        matchPlayers: {
+          include: {
+            match: {
+              include: {
+                tournament: true
+              },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+            },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Get all users
+  findAll: () => {
+    return prisma.user.findMany({
+      select: {
+        id: true,
+        username: true,
+        email: true,
+        firstName: true,
+        lastName: true,
+        createdAt: true
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Create new user
+  create: (data: {
+    username: string;
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }) => {
+    return prisma.user.create({
+      data
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Update user password
+  updatePassword: (userId: string, hashedPassword: string) => {
+    return prisma.user.update({
+      where: { id: userId },
+      data: { password: hashedPassword }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+};
+
+// Match queries
+export const matchQueries = {
+  // Get match by ID
+  findById: (matchId: string) => {
+    return prisma.match.findUnique({
+      where: { id: matchId }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Get match with all related data
+  findByIdWithDetails: (matchId: string) => {
+    return prisma.match.findUnique({
+      where: { id: matchId },
+      include: {
+        players: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                username: true,
+                firstName: true,
+                lastName: true
+              },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+            },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+        events: {
+          include: {
+            player: {
+              select: {
+                id: true,
+                username: true,
+                firstName: true,
+                lastName: true
+              },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+            },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+          orderBy: {
+            timestamp: 'asc'
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+        playerStats: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                username: true,
+                firstName: true,
+                lastName: true
+              },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+            },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+        tournament: true
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Get all matches
+  findAll: () => {
+    return prisma.match.findMany({
+      include: {
+        players: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                username: true,
+                firstName: true,
+                lastName: true
+              },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+            },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+        tournament: true
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+      orderBy: {
+        createdAt: 'desc'
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Get matches by status
+  findByStatus: (status: MatchStatus) => {
+    return prisma.match.findMany({
+      where: { status },
+      include: {
+        players: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                username: true,
+                firstName: true,
+                lastName: true
+              },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+            },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+        tournament: true
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+      orderBy: {
+        createdAt: 'desc'
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Get matches by type
+  findByType: (type: MatchType) => {
+    return prisma.match.findMany({
+      where: { type },
+      include: {
+        players: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                username: true,
+                firstName: true,
+                lastName: true
+              },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+            },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+        tournament: true
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+      orderBy: {
+        createdAt: 'desc'
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Create new match
+  create: (data: {
+    type: MatchType;
+    phase?: TournamentPhase;
+    tournamentId?: string;
+    status: MatchStatus;
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }) => {
+    return prisma.match.create({
+      data
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Update match
+  update: (matchId: string, data: {
+    status?: MatchStatus;
+    phase?: TournamentPhase;
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }) => {
+    return prisma.match.update({
+      where: { id: matchId },
+      data
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Delete match
+  delete: (matchId: string) => {
+    return prisma.match.delete({
+      where: { id: matchId }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Add player to match
+  addPlayer: (matchId: string, userId: string, team: number, position: number) => {
+    return prisma.matchPlayer.create({
+      data: {
+        matchId,
+        userId,
+        team,
+        position
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+};
+
+// Tournament queries
+export const tournamentQueries = {
+  // Get tournament with matches
+  findByIdWithMatches: (tournamentId: string) => {
+    return prisma.tournament.findUnique({
+      where: { id: tournamentId },
+      include: {
+        matches: {
+          include: {
+            players: {
+              include: {
+                user: {
+                  select: {
+                    id: true,
+                    username: true,
+                    firstName: true,
+                    lastName: true
+                  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+                },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+              },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+            },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+          orderBy: {
+            createdAt: 'desc'
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Get all tournaments
+  findAll: () => {
+    return prisma.tournament.findMany({
+      include: {
+        _count: {
+          select: {
+            matches: true
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+      orderBy: {
+        createdAt: 'desc'
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+};
+
+// Statistics queries
+export const statsQueries = {
+  // Get player statistics for a specific match
+  getPlayerStatsForMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+      include: {
+        user: {
+          select: {
+            id: true,
+            username: true,
+            firstName: true,
+            lastName: true
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Get all statistics for a match
+  getMatchStats: (matchId: string) => {
+    return prisma.playerStats.findMany({
+      where: { matchId },
+      include: {
+        user: {
+          select: {
+            id: true,
+            username: true,
+            firstName: true,
+            lastName: true
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Get player's overall statistics
+  getPlayerOverallStats: (userId: string) => {
+    return prisma.playerStats.findMany({
+      where: { userId },
+      include: {
+        match: {
+          include: {
+            tournament: true
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+      orderBy: {
+        createdAt: 'desc'
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+};
+
+// Event queries
+export const eventQueries = {
+  // Get events for a match
+  getMatchEvents: (matchId: string) => {
+    return prisma.matchEvent.findMany({
+      where: { matchId },
+      include: {
+        player: {
+          select: {
+            id: true,
+            username: true,
+            firstName: true,
+            lastName: true
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+      orderBy: {
+        timestamp: 'asc'
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+
+  // Get events by player
+  getPlayerEvents: (playerId: string, matchId?: string) => {
+    return prisma.matchEvent.findMany({
+      where: {
+        playerId,
+        ...(matchId && { matchId })
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+      include: {
+        match: true,
+        player: {
+          select: {
+            id: true,
+            username: true,
+            firstName: true,
+            lastName: true
+          },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+        },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  },
+      orderBy: {
+        timestamp: 'desc'
+      },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+    },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  });
+  },
+
+  // Create new player stats
+  create: (data: {
+    userId: string;
+    matchId: string;
+    firstServePercentage: number;
+    pointsWonFirstServe: number;
+    pointsWonSecondServe: number;
+    unforcedErrors: number;
+    forcedErrors: number;
+    netErrors: number;
+    returnErrors: number;
+    smashErrors: number;
+    lobErrors: number;
+    pointsWonExit34: number;
+    pointsLostExit34: number;
+    pointsWonReturn: number;
+  }) => {
+    return prisma.playerStats.create({
+      data
+    });
+  },
+
+  // Update player stats
+  update: (statsId: string, data: any) => {
+    return prisma.playerStats.update({
+      where: { id: statsId },
+      data
+    });
+  },
+
+  // Find by player and match
+  findByPlayerAndMatch: (userId: string, matchId: string) => {
+    return prisma.playerStats.findUnique({
+      where: {
+        userId_matchId: {
+          userId,
+          matchId
+        }
+      }
+    });
+  }
+}; 
