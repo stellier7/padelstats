@@ -91,7 +91,7 @@ class ApiService {
     // Determine API URL based on environment
     const isProduction = window.location.hostname !== 'localhost';
     const apiUrl = isProduction 
-      ? 'https://your-railway-backend-url.railway.app/api'  // We'll update this after deployment
+      ? 'https://padelstats.onrender.com/api'  // Your actual Render URL
       : (process.env.REACT_APP_API_URL || 'http://localhost:3001/api');
     
     console.log('ApiService - Using API URL:', apiUrl);
