@@ -23,28 +23,24 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             
-            {/* Protected routes */}
+            {/* Public routes */}
             <Route
               path="/dashboard"
               element={
-                <ProtectedRoute>
-                  <div>
-                    <Header />
-                    <Dashboard />
-                  </div>
-                </ProtectedRoute>
+                <div>
+                  <Header />
+                  <Dashboard />
+                </div>
               }
             />
             
             <Route
               path="/matches"
               element={
-                <ProtectedRoute>
-                  <div>
-                    <Header />
-                    <MatchesList />
-                  </div>
-                </ProtectedRoute>
+                <div>
+                  <Header />
+                  <MatchesList />
+                </div>
               }
             />
             
@@ -87,12 +83,10 @@ function App() {
             <Route
               path="/stats"
               element={
-                <ProtectedRoute>
-                  <div>
-                    <Header />
-                    <Stats />
-                  </div>
-                </ProtectedRoute>
+                <div>
+                  <Header />
+                  <Stats />
+                </div>
               }
             />
             
