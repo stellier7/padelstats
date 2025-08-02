@@ -5,6 +5,8 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
+import { exec } from 'child_process';
+import { promisify } from 'util';
 
 // Import routes
 import authRoutes from './routes/auth';
@@ -84,10 +86,39 @@ app.use((req: express.Request, res: express.Response) => {
   res.status(404).json({ error: 'Route not found' });
 });
 
-server.listen(PORT, () => {
+// Database setup function
+const setupDatabase = async () => {
+  const execAsync = promisify(exec);
+  
+  try {
+    console.log('🗄️ Setting up database...');
+    
+    // Generate Prisma client
+    console.log('📦 Generating Prisma client...');
+    await execAsync('npx prisma generate');
+    
+    // Run migrations
+    console.log('🔄 Running database migrations...');
+    await execAsync('npx prisma migrate deploy');
+    
+    // Seed database
+    console.log('🌱 Seeding database...');
+    await execAsync('npx prisma db seed');
+    
+    console.log('✅ Database setup completed successfully!');
+  } catch (error) {
+    console.error('❌ Database setup failed:', error);
+    console.log('⚠️ Continuing without database setup...');
+  }
+};
+
+server.listen(PORT, async () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📊 Padel Statistics API ready`);
   console.log(`🔗 CORS Origin: ${process.env.CORS_ORIGIN || "http://localhost:3000"}`);
+  
+  // Setup database on startup
+  await setupDatabase();
 });
 
 export { app, io }; 
