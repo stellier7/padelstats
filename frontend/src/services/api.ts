@@ -88,8 +88,16 @@ class ApiService {
   private token: string | null = null;
 
   constructor() {
+    // Determine API URL based on environment
+    const isProduction = window.location.hostname !== 'localhost';
+    const apiUrl = isProduction 
+      ? 'https://your-railway-backend-url.railway.app/api'  // We'll update this after deployment
+      : (process.env.REACT_APP_API_URL || 'http://localhost:3001/api');
+    
+    console.log('ApiService - Using API URL:', apiUrl);
+    
     this.api = axios.create({
-      baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3001/api',
+      baseURL: apiUrl,
       headers: {
         'Content-Type': 'application/json',
       },
