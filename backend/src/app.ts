@@ -31,6 +31,7 @@ const allowedOrigins = isProduction
 
 console.log('🌍 Environment:', process.env.NODE_ENV || 'development');
 console.log('🔗 Allowed CORS origins:', allowedOrigins);
+console.log('🚀 Deployment timestamp:', new Date().toISOString());
 
 const io = new Server(server, {
   cors: {
