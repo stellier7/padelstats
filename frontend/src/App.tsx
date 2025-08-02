@@ -59,12 +59,10 @@ function App() {
             <Route
               path="/matches/:id"
               element={
-                <ProtectedRoute>
-                  <div>
-                    <Header />
-                    <MatchDetails />
-                  </div>
-                </ProtectedRoute>
+                <div>
+                  <Header />
+                  <MatchDetails />
+                </div>
               }
             />
             
