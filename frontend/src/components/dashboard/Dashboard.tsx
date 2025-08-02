@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { apiService, Match } from '../../services/api';
+import NetworkDiagnostic from '../common/NetworkDiagnostic';
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
@@ -51,6 +52,7 @@ const Dashboard: React.FC = () => {
 
   const inProgressMatches = matches.filter(match => match.status === 'IN_PROGRESS');
   const completedMatches = matches.filter(match => match.status === 'COMPLETED');
+  const [showDiagnostic, setShowDiagnostic] = useState(false);
 
   if (loading) {
     return (
@@ -67,15 +69,32 @@ const Dashboard: React.FC = () => {
         <div className="px-4 py-6 sm:px-0">
           <div className="bg-white overflow-hidden shadow rounded-lg">
             <div className="px-4 py-5 sm:p-6">
-              <h1 className="text-2xl font-bold text-gray-900">
-                Welcome back, {user?.firstName || 'Padel Player'}! 🏓
-              </h1>
-              <p className="mt-1 text-sm text-gray-600">
-                Track your padel matches and analyze your performance
-              </p>
+              <div className="flex justify-between items-start">
+                <div>
+                  <h1 className="text-2xl font-bold text-gray-900">
+                    Welcome back, {user?.firstName || 'Padel Player'}! 🏓
+                  </h1>
+                  <p className="mt-1 text-sm text-gray-600">
+                    Track your padel matches and analyze your performance
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowDiagnostic(!showDiagnostic)}
+                  className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg text-sm font-medium transition-colors"
+                >
+                  {showDiagnostic ? 'Hide' : 'Network'} Diagnostic
+                </button>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Network Diagnostic Tool */}
+        {showDiagnostic && (
+          <div className="px-4 py-6 sm:px-0">
+            <NetworkDiagnostic />
+          </div>
+        )}
 
         {/* Stats Overview */}
         <div className="px-4 py-6 sm:px-0">

@@ -86,6 +86,8 @@ export interface Tournament {
 class ApiService {
   private api: AxiosInstance;
   private token: string | null = null;
+  private retryCount = 0;
+  private maxRetries = 3;
 
   constructor() {
     // Determine API URL based on environment
@@ -94,13 +96,15 @@ class ApiService {
       ? 'https://padelstats.onrender.com/api'  // Your actual Render URL
       : (process.env.REACT_APP_API_URL || 'http://localhost:3001/api');
     
-    console.log('ApiService - Using API URL:', apiUrl);
+    console.log('🌍 Environment:', isProduction ? 'production' : 'development');
+    console.log('🔗 ApiService - Using API URL:', apiUrl);
     
     this.api = axios.create({
       baseURL: apiUrl,
       headers: {
         'Content-Type': 'application/json',
       },
+      timeout: 10000, // 10 second timeout
     });
 
     // Load token from localStorage
@@ -115,27 +119,53 @@ class ApiService {
         if (this.token) {
           config.headers.Authorization = `Bearer ${this.token}`;
         }
+        
+        // Add request ID for debugging
+        config.headers['X-Request-ID'] = Math.random().toString(36).substr(2, 9);
+        
         // Log request data for debugging
         if (config.method === 'post' && config.url === '/matches') {
-          console.log('Request interceptor - URL:', config.url);
-          console.log('Request interceptor - Data:', config.data);
-          console.log('Request interceptor - Headers:', config.headers);
+          console.log('📤 Request interceptor - URL:', config.url);
+          console.log('📤 Request interceptor - Data:', config.data);
+          console.log('📤 Request interceptor - Headers:', config.headers);
         }
         return config;
       },
       (error) => {
+        console.error('❌ Request interceptor error:', error);
         return Promise.reject(error);
       }
     );
 
-    // Add response interceptor to handle token expiration
+    // Add response interceptor to handle token expiration and retries
     this.api.interceptors.response.use(
-      (response) => response,
-      (error) => {
+      (response) => {
+        console.log('✅ Response received:', response.status, response.config.url);
+        this.retryCount = 0; // Reset retry count on success
+        return response;
+      },
+      async (error) => {
+        console.error('❌ Response error:', error.response?.status, error.config?.url, error.message);
+        
+        // Handle 401 Unauthorized
         if (error.response?.status === 401) {
+          console.log('🔐 Unauthorized - clearing token and redirecting to login');
           this.clearAuthToken();
           window.location.href = '/login';
+          return Promise.reject(error);
         }
+        
+        // Handle network errors with retry logic
+        if (this.shouldRetry(error) && this.retryCount < this.maxRetries) {
+          this.retryCount++;
+          console.log(`🔄 Retrying request (${this.retryCount}/${this.maxRetries})...`);
+          
+          // Wait before retrying (exponential backoff)
+          await this.delay(Math.pow(2, this.retryCount) * 1000);
+          
+          return this.api.request(error.config);
+        }
+        
         return Promise.reject(error);
       }
     );
@@ -158,12 +188,28 @@ class ApiService {
     return this.token;
   }
 
-  // Health check
+  // Helper methods
+  private shouldRetry(error: any): boolean {
+    return (
+      !error.response || // Network error
+      error.response.status >= 500 || // Server error
+      error.code === 'ECONNABORTED' // Timeout
+    );
+  }
+
+  private delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  // Health check with better error handling
   async healthCheck(): Promise<ApiResponse> {
     try {
+      console.log('🏥 Performing health check...');
       const response = await this.api.get<ApiResponse>('/health');
+      console.log('✅ Health check successful:', response.data);
       return response.data;
     } catch (error) {
+      console.error('❌ Health check failed:', error);
       throw this.handleError(error);
     }
   }

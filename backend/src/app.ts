@@ -18,10 +18,25 @@ dotenv.config({ path: '.env' });
 
 const app = express();
 const server = createServer(app);
+
+// Determine CORS origins based on environment
+const isProduction = process.env.NODE_ENV === 'production';
+const allowedOrigins = isProduction 
+  ? [
+      'https://padelstats-uvgl.vercel.app',
+      'https://padelstats.vercel.app',
+      'https://padelstats.onrender.com'
+    ]
+  : ['http://localhost:3000', 'http://localhost:3001'];
+
+console.log('🌍 Environment:', process.env.NODE_ENV || 'development');
+console.log('🔗 Allowed CORS origins:', allowedOrigins);
+
 const io = new Server(server, {
   cors: {
-    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
-    methods: ["GET", "POST"]
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    credentials: true
   }
 });
 
@@ -30,8 +45,20 @@ const PORT = process.env.PORT || 3001;
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || "http://localhost:3000",
-  credentials: true
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.log('🚫 CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
 app.use(morgan('combined'));
 app.use(express.json());
@@ -42,13 +69,19 @@ app.get('/', (req, res) => {
   res.json({ 
     message: 'Padel Statistics API',
     version: '1.0.0',
-    status: 'running'
+    status: 'running',
+    environment: process.env.NODE_ENV || 'development',
+    timestamp: new Date().toISOString()
   });
 });
 
 // Health check
 app.get('/health', (req, res) => {
-  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+  res.json({ 
+    status: 'OK', 
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
 });
 
 // API Routes
