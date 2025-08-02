@@ -32,7 +32,7 @@ A real-time padel match statistics tracking application with multi-user observat
 ### 1. Clone and Setup
 
 ```bash
-git clone [your-repo-url]
+git clone https://github.com/stellier7/padelstats.git
 cd padelApp
 npm run install:all
 ```
@@ -77,6 +77,40 @@ npm run dev
 npm run dev:frontend  # Frontend on http://localhost:3000
 npm run dev:backend   # Backend on http://localhost:3001
 ```
+
+## 🌐 Deployment
+
+### Frontend (Vercel)
+
+The frontend is configured for automatic deployment on Vercel:
+
+1. Connect your GitHub repository to Vercel
+2. Vercel will automatically detect the React app and deploy
+3. The `vercel.json` configuration handles the build process
+
+### Backend (Railway/Render)
+
+Deploy the backend to Railway or Render:
+
+1. **Railway**: Connect your GitHub repo and set environment variables
+2. **Render**: Create a new Web Service and point to the `backend/` directory
+
+#### Environment Variables for Production:
+
+```env
+DATABASE_URL="your-production-postgresql-url"
+JWT_SECRET="your-production-jwt-secret"
+NODE_ENV="production"
+CORS_ORIGIN="https://your-frontend-domain.vercel.app"
+```
+
+### Database
+
+Use a production PostgreSQL database:
+- **Railway**: Built-in PostgreSQL service
+- **Render**: PostgreSQL add-on
+- **Supabase**: Free PostgreSQL hosting
+- **Neon**: Serverless PostgreSQL
 
 ## 📁 Project Structure
 
