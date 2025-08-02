@@ -18,7 +18,7 @@ A real-time padel match statistics tracking application with multi-user observat
 - **Real-time**: Socket.io
 - **Authentication**: JWT tokens
 - **Styling**: Tailwind CSS
-- **Deployment**: Vercel (frontend) + Railway/Render (backend)
+- **Deployment**: Vercel (frontend) + Render (backend)
 
 ## 📋 Prerequisites
 
@@ -88,12 +88,11 @@ The frontend is configured for automatic deployment on Vercel:
 2. Vercel will automatically detect the React app and deploy
 3. The `vercel.json` configuration handles the build process
 
-### Backend (Railway/Render)
+### Backend (Render)
 
-Deploy the backend to Railway or Render:
+Deploy the backend to Render:
 
-1. **Railway**: Connect your GitHub repo and set environment variables
-2. **Render**: Create a new Web Service and point to the `backend/` directory
+1. **Render**: Create a new Web Service and point to the `backend/` directory
 
 #### Environment Variables for Production:
 
@@ -107,7 +106,6 @@ CORS_ORIGIN="https://your-frontend-domain.vercel.app"
 ### Database
 
 Use a production PostgreSQL database:
-- **Railway**: Built-in PostgreSQL service
 - **Render**: PostgreSQL add-on
 - **Supabase**: Free PostgreSQL hosting
 - **Neon**: Serverless PostgreSQL
